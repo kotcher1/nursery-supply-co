@@ -30,6 +30,10 @@
   color: inherit;
 }
 
+body {
+  min-width: 320px;
+}
+
 .main-section {
   background-image: url("../style/img/background1.png");
   height: 870px;
@@ -79,6 +83,14 @@
   margin-top: -10px;
 }
 
+.nav-check {
+  display: none;
+}
+
+.nav-showmenu {
+  display: none;
+}
+
 .nav-begin, .nav-end {
   display: flex;
   justify-content: center;
@@ -95,12 +107,13 @@
   line-height: 40px;
   list-style-type: none;
   padding: 15px 13px;
-  margin-top: -24px;
+  margin-top: -26px;
 }
 
 .nav-item:hover {
   background-color: #e46107;
-  border-radius: 5px;
+  border-radius: 0 0 5px 5px;
+  cursor: pointer;
 }
 
 .main-info-title {
@@ -147,17 +160,19 @@
 
 .products-information {
   background-color: #26311c;
-  height: 680px;
+  height: 697px;
   display: flex;
   justify-content: center;
 }
 
 .info-cards {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
   top: -110px;
   position: relative;
+  max-width: 960px;
 }
 
 .cards1 {
@@ -169,7 +184,7 @@
   flex-direction: column;
   align-items: center;
   min-width: 307px;
-  width: 100%;
+  margin-bottom: 38px;
 }
 
 .cards-image {
@@ -203,6 +218,7 @@
 .learn-more-btn:hover {
   border: 2px solid #8dc705;
   color: #8dc705;
+  cursor: pointer;
 }
 
 .cards2 {
@@ -271,6 +287,10 @@
 
 .nav-end {
   height: 65px;
+}
+
+.nav-end-block {
+  display: flex;
 }
 
 .nav-end .nav-item {
@@ -358,22 +378,7 @@
   .info-cards {
     position: initial;
     top: 0;
-  }
-
-  .cards1, .cards2{
-    flex-direction: column;
-  }
-
-  .card {
-    padding: 25px 0;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
- 
-  }
-
-  .cards2 {
-    margin-top: 0px;
+    padding-top: 25px;
   }
 
   .cards-image {
@@ -382,12 +387,6 @@
 
   .card-description {
     margin: 0 10px;
-  }
-
-  .learn-more-btn {    
-    font-size: 25px;
-    font-weight: 400;
-    margin-top: 20px;
   }
 
   .benefits-information {
@@ -403,7 +402,131 @@
   .footer {
     height: auto;
   } 
+
+  .nav-begin .nav-check {
+    display: none;
+  }
+  
+  .nav-showmenu, .nav-back {
+    cursor: pointer;
+    visibility: visible;
+  }
+
+  .nav-begin {
+    justify-content: start;
+    width: 90%;
+    user-select: none;
+  }
+
+  .nav-begin .nav-showmenu {
+    padding: 5px;
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+    top: 2px;
+    font-size: 23px;
+    color: #fff;
+    background-color: rgba(38, 49, 28, .7);
+    border-radius: 5px;
+  }
+
+  .nav-begin .nav-back {
+    position: fixed;
+    top: 0;
+    right: 0;  
+    bottom: 0;
+    left: 0;
+    transition: background-color .3s;
+    border-radius: 5px;
+  }
+
+  .nav-begin .nav-list {
+    list-style: none;
+    color: #fff;
+    overflow: hidden;
+    position: absolute;
+    top: 213px;
+    height: 251px;
+    bottom: 0;
+    left: -220px;
+    display: block;
+    width: 220px;
+    margin: 0;
+    padding: 71px 0 0;
+    text-transform: uppercase;
+    line-height: 2em;
+    background-color: #2c2c2c;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    transition: transform .3s;
+    will-change: transform;
+    backface-visibility: hidden;
+    border-radius: 5px;
+  }
+
+  .nav-begin .nav-item {
+    display: block;
+    text-align: left;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  .nav-begin .nav-check:checked~.nav-back {
+    background-color: rgba(0,0,0,.2);
+    bottom: 0;
+  }
+
+  .nav-begin .nav-item:hover,.nav-showmenu:hover {
+    opacity: 0.7;
+  }
+
+  .nav-begin .nav-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-begin .nav-check:checked +.nav-showmenu {
+    color:#fff;
+  }
+
+  .nav-begin .nav-check:not(:checked) ~ .nav-back {
+    display: none;
+  }
+
+  .nav-begin .nav-check:checked~.nav-list {
+    transform: translateX(100%);
+  }
+
+  .nav-end {
+    padding: 5px 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 65px;
+    overflow: hidden;
+  }
+
+  .nav-end .nav-item {
+    text-align: center;
+    padding: 5px 29px;
+  }
+
+  .footer-info {
+    flex-direction: column;
+    align-items: center;
+    line-height: 30px;
+    margin: 10px;
+  }
+
+  .footer-info .rights-text {
+    margin-right: 0;
+  }
+
 }
+
 
 @media (min-width: 769px) and (max-width: 920px) {
   .main-info-title {
